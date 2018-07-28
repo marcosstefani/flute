@@ -1,0 +1,6 @@
+*.db
+.vscode/
+flute.egg-info/
+dist/
+build/
+*.pyc
