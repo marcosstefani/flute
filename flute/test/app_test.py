@@ -5,6 +5,8 @@ import os
 import unittest
 from files.util import current_dir, create_app, delete_app
 
+import app
+
 class TestApp( unittest.TestCase ):
     
     def test_initialize( self ):
@@ -18,6 +20,9 @@ class TestApp( unittest.TestCase ):
         self.assertTrue( not os.path.isdir( current_dir + '/config' ) )
         self.assertTrue( not os.path.isfile( current_dir + '/settings.json' ) )
         self.assertTrue( not os.path.isfile( current_dir + '/app.py' ) )
+        
+        app.new()
+        delete_app()
 
 if __name__ == '__main__':
     unittest.main()
