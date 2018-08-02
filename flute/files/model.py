@@ -11,7 +11,7 @@
 
 import operator
 
-from .util import create_dir, create_file, tabs
+from .util import create_dir, create_file, tabs, caps
 
 class Field:
     """
@@ -59,7 +59,7 @@ class Field:
         elif self.fkey:
             result = result + ", db.ForeignKey( '" + self.fkey + "' ) )\n"
             name = self.fkey.split('.')[0]
-            result = result + tabs( 1 ) + "{name} = db.relationship( '{cname}' )".format( name = name, cname = _caps(name) )
+            result = result + tabs( 1 ) + "{name} = db.relationship( '{cname}' )".format( name = name, cname = caps(name) )
 
         # other properties
         else:
@@ -147,7 +147,7 @@ class Model:
 
     def value( self ):
         txt = "from db import db\n\n"
-        txt = txt + "class {name}( db.Model ):\n".format( name = _caps( self.name ) )
+        txt = txt + "class {name}( db.Model ):\n".format( name = caps( self.name ) )
         txt = txt + tabs( 1 ) + "__tablename__ = '{name}'\n\n".format( name = self.name )
 
         pkey_field = list([x for x in self.fields if x.pkey == True])
@@ -261,17 +261,6 @@ class Model:
             result = result + tabs( 2 ) + "return result\n"
 
         return result
-
-def _caps( text ):
-    result = text.replace( "-", " " )
-    result = result.replace( "_", " " )
-    split = result.split()
-    result = ""
-
-    for i in range( len( split ) ):
-        result = result + split[i].capitalize()
-
-    return result
 
 # transform from tuple to Field type
 def field_assembler( obj ):

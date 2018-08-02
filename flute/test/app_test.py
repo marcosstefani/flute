@@ -22,7 +22,7 @@ class TestApp( unittest.TestCase ):
         self.assertTrue( not os.path.isfile( current_dir + '/app.py' ) )
         
         app.new()
-        delete_app()
+        # delete_app()
 
 if __name__ == '__main__':
     unittest.main()
