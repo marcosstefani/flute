@@ -125,7 +125,7 @@ def _create_templates():
     content = content + "<head>\n"
     content = content + tabs( 1 ) + "<title>{{ title }} | Project Dream Team</title>\n"
     content = content + tabs( 1 ) + "<link rel='stylesheet' type='text/css' href='//cloud.typography.com/746852/739588/css/fonts.css'>\n"
-    content = content + tabs( 1 ) + "<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>\n"
+    content = content + tabs( 1 ) + "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>\n"
     content = content + tabs( 1 ) + "<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>\n"
     content = content + tabs( 1 ) + "<link href='{{ url_for('static', filename='css/style.css') }}' rel='stylesheet'>\n"
     content = content + tabs( 1 ) + "<!-- <link rel='shortcut icon' href='{{ url_for('static', filename='img/favicon.ico') }}'> -->\n"
@@ -144,6 +144,17 @@ def _create_templates():
     content = content + tabs( 1 ) + '<h1>{{ number }}</h1>\n'
     content = content + tabs( 1 ) + '<p class="return">{{ title }}</p>\n'
     content = content + '</div>\n'
+    content = content + '{% endblock %}\n'
+    create_file( filename, content )
+  
+    filename = template_dir + "/home.html"
+    content = '{% extends "base.html" %}\n'
+    content = content + '{% block title %}{{ title }}{% endblock %}\n'
+    content = content + '{% block body %}\n'
+    content = content + '<nav class="navbar navbar-light bg-light">\n'
+    content = content + tabs( 1 ) + '<a class="navbar-brand" href="#">\n'
+    content = content + tabs( 2 ) + '<img src="https://i.imgsafe.org/3c/3cf10be9ce.png" width="30" height="30" class="d-inline-block align-top" alt="">Flute</a>\n'
+    content = content + '</nav>\n'
     content = content + '{% endblock %}\n'
     create_file( filename, content )
 
