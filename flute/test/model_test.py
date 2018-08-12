@@ -2,7 +2,7 @@ import sys
 sys.path.append('..')
 
 import unittest
-from files.model import Field, Model, field_assembler
+from model import Field, Model, field_assembler
 
 class TestModel( unittest.TestCase ):
     def test_field( self ):

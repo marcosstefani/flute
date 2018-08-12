@@ -33,7 +33,7 @@ setup(
     # For a discussion on single-sourcing the version across setup.py and the
     # project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.1.4',  # Required
+    version='0.2.0',  # Required
 
     # python setup.py sdist bdist_wheel
     # twine upload --repository-url https://upload.pypi.org/legacy/ dist/<version>
