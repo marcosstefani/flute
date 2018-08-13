@@ -4,13 +4,18 @@ import shutil
 
 current_dir = os.getcwd()
 
+def precondition( condiction, message ):
+    if not ( condiction ):
+        except OSError:
+            raise Exception( message )
+
 def create_dir( dir ):
     full_dir = current_dir + dir
     if not os.path.isdir( full_dir ):
         try:
             os.makedirs( full_dir )
         except OSError:
-            raise Exception( "could not create folder, check current user's permissions" )
+            raise Exception( "Could not create folder, check current user's permissions" )
     
     return full_dir
 
@@ -20,7 +25,7 @@ def remove( name ):
         try:
             os.remove( full_name )
         except OSError:
-            raise Exception( "could not remove this file, check current user's permissions" )
+            raise Exception( "Could not remove this file, check current user's permissions" )
     else:
         try:
             shutil.rmtree( full_name )
@@ -176,6 +181,23 @@ def _error_string( number, name ):
     result = result + "def " + name + "( error ):\n"
     result = result + tabs( 1 ) + "return render_template('error.html', number= " + str( number ) + ", title='" + caps( name, spl=True ) + "'), " + str( number ) + "\n\n"
     return result
+
+def create_model( model ):
+    _verify_app()
+
+    value = model.value()
+    filename = current_dir + "/app/model/{name}.py".format( name = model.name )
+    create_file( filename, value )
+
+def create_controller( model ):
+    _verify_app()
+    
+def _verify_app():
+    if not os.path.isdir( current_dir + '/app' ) or
+       not os.path.isdir( current_dir + '/config' ) or
+       not os.path.isfile( current_dir + '/settings.json' ) or
+       not os.path.isfile( current_dir + '/app.py' ):
+        create_app()
 
 def tabs( number ):
     return number * "    "
