@@ -11,7 +11,7 @@
 
 import operator
 
-from .util import create_dir, create_file, tabs, caps
+from util import create_dir, create_file, tabs, caps
 
 class Field:
     """

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }} | Project Dream Team</title>
+    <link rel='stylesheet' type='text/css' href='//cloud.typography.com/746852/739588/css/fonts.css'>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
+    <link href='{{ url_for('static', filename='css/style.css') }}' rel='stylesheet'>
+    <!-- <link rel='shortcut icon' href='{{ url_for('static', filename='img/favicon.ico') }}'> -->
+</head>
+<body>
+    {% block body %} {% endblock %}
+</body>
+</html>

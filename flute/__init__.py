@@ -17,7 +17,7 @@ def new_model( name, fields=None, uniques=None ):
     return model
 
 def _create_model( model ):
-    precondition( isinstance( model, Model ) ), "To create a model, an object of type Model must be passed.")
+    precondition( isinstance( model, Model ) , "To create a model, an object of type Model must be passed.")
     create_model( model )
 
 def mvcs( model ):

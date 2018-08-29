@@ -6,8 +6,7 @@ current_dir = os.getcwd()
 
 def precondition( condiction, message ):
     if not ( condiction ):
-        except OSError:
-            raise Exception( message )
+        raise Exception( message )
 
 def create_dir( dir ):
     full_dir = current_dir + dir
@@ -193,10 +192,7 @@ def create_controller( model ):
     _verify_app()
     
 def _verify_app():
-    if not os.path.isdir( current_dir + '/app' ) or
-       not os.path.isdir( current_dir + '/config' ) or
-       not os.path.isfile( current_dir + '/settings.json' ) or
-       not os.path.isfile( current_dir + '/app.py' ):
+    if not os.path.isdir( current_dir + '/app' ) or not os.path.isdir( current_dir + '/config' ) or not os.path.isfile( current_dir + '/settings.json' ) or not os.path.isfile( current_dir + '/app.py' ):
         create_app()
 
 def tabs( number ):
