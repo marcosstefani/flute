@@ -11,7 +11,7 @@
 
 import operator
 
-from .util import create_dir, create_file, tabs, caps
+from util import create_dir, create_file, tabs, caps
 
 class Field:
     """
@@ -179,6 +179,16 @@ class Model:
         txt = txt + self._constructor() + self._main_functions()
 
         return txt
+
+    def controller( self ):
+        txt = "from flask import Blueprint, request, render_template\n"
+        txt = txt + "from app.service.{name} import find_all\n"
+        txt = txt + "from app.model.{name} import {capsname}\n\n".format( name = self.name, capsname = caps( self.name ) )
+        txt = txt + "mod_{name} = Blueprint('{name}', __name__, url_prefix='/{name}')\n\n".format( name = self.name )
+        txt = txt + "@mod_{name}.route('/')\n".format( name = self.name )
+        txt = txt + "def index_{name}():\n".format( name = self.name )
+        txt = txt + tabs( 1 ) + "{name}_list = find_all()\n".format( name = self.name )
+        txt = txt + tabs( 1 ) + "return render_template( 'list.html', {name}_list )\n".format( name = self.name )
 
     def _constructor( self ):
         result = "\n" + tabs( 1 ) + "def __init__( self"

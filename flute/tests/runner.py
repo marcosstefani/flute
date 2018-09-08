@@ -1,8 +1,8 @@
 import unittest
 import os
 
-import app_test
-import model_test
+from tests import app_test
+from tests import model_test
 
 loader = unittest.TestLoader()
 suite  = unittest.TestSuite()
