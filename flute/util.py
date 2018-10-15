@@ -15,7 +15,7 @@ def create_dir( dir ):
             os.makedirs( full_dir )
         except OSError:
             raise Exception( "Could not create folder, check current user's permissions" )
-    
+
     return full_dir
 
 def remove( name ):
@@ -30,7 +30,7 @@ def remove( name ):
             shutil.rmtree( full_name )
         except OSError:
             raise Exception( "could not remove this folder, check current user's permissions" )
-        
+
     return full_name
 
 def create_file( full_name, content ):
@@ -40,7 +40,7 @@ def create_file( full_name, content ):
             overwrite = input( "File ({}) already exists, do you want to overwrite it? (y,n): ".format( full_name ) )
         if overwrite.lower()[0] == 'y':
             os.remove( full_name )
-    
+
     if not os.path.isfile( full_name ):
         f = open( full_name, "w+" )
         for x in range( 0, len( content ) ):
@@ -49,7 +49,7 @@ def create_file( full_name, content ):
 
 def create_app():
     create_dir( '/app' )
-    
+
     _create_settings()
     _create_config()
     _create_main()
@@ -150,7 +150,7 @@ def _create_templates():
     content = content + '</div>\n'
     content = content + '{% endblock %}\n'
     create_file( filename, content )
-  
+
     filename = template_dir + "/home.html"
     content = '{% extends "base.html" %}\n'
     content = content + '{% block title %}{{ title }}{% endblock %}\n'
@@ -188,9 +188,14 @@ def create_model( model ):
     filename = current_dir + "/app/model/{name}.py".format( name = model.name )
     create_file( filename, value )
 
-def create_controller( model ):
+def create_controller():
     _verify_app()
-    
+
+    filename = current_dir + "/app/controller/controller.py"
+    create_dir('/app/controller')
+    create_file( filename, value )
+
+
 def _verify_app():
     if not os.path.isdir( current_dir + '/app' ) or not os.path.isdir( current_dir + '/config' ) or not os.path.isfile( current_dir + '/settings.json' ) or not os.path.isfile( current_dir + '/app.py' ):
         create_app()
