@@ -1,6 +1,6 @@
 import os
 from .model import Model
-from .util import precondition, create_dir, create_app, delete_app, create_model
+from .util import precondition, create_dir, create_app, delete_app, create_model, create_controller
 
 def new_app():
     create_app()
@@ -20,5 +20,9 @@ def _create_model( model ):
     precondition( isinstance( model, Model ) , "To create a model, an object of type Model must be passed.")
     create_model( model )
 
+def _create_controller():
+    create_controller()
+
 def mvcs( model ):
     _create_model( model )
+    _create_controller()
